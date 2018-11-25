@@ -1,10 +1,12 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -31,43 +33,30 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+
 	socket, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	data := []Documents{
-		Documents{
-			Name:  "BTOW3",
-			Value: 37,
-		},
-		Documents{
-			Name:  "CCRO3",
-			Value: 11,
-		},
-		Documents{
-			Name:  "CIEL3",
-			Value: 9,
-		},
-		Documents{
-			Name:  "CMIG4",
-			Value: 12,
-		},
-		Documents{
-			Name:  "CPLE6",
-			Value: 28,
-		},
-	}
+	for true {
+		jsonFile, err := os.Open("dataset.json")
 
-	m := Message{
-		Payload: data,
-	}
+		fmt.Println("Successfully Opened dataset.json")
 
-	b, err := json.Marshal(m)
+		byteValue, _ := ioutil.ReadAll(jsonFile)
 
-	err = socket.WriteMessage(websocket.TextMessage, b)
-	if err != nil {
-		log.Println(err)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		err = socket.WriteMessage(websocket.TextMessage, byteValue)
+		if err != nil {
+			log.Println(err)
+		}
+
+		time.Sleep(time.Second)
+		defer jsonFile.Close()
 	}
 }
 

@@ -1,0 +1,24 @@
+{
+    "payload": [
+        {
+            "name":"PETR4",
+            "value": 24.39
+        },
+        {
+            "name":"QUAL3",
+            "value": 13.54
+        },
+        {
+            "name":"RADL3",
+            "value": 62.71
+        },
+        {
+            "name":"RAIL3",
+            "value": 17.30
+        },
+        {
+            "name":"RENT3",
+            "value": 27.90
+        }
+    ]
+}
