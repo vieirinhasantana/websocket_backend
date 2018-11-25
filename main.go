@@ -54,9 +54,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-
-		time.Sleep(time.Second)
 		defer jsonFile.Close()
+		time.Sleep(3 * time.Second)
 	}
 }
 

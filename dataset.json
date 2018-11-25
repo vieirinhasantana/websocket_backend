@@ -2,23 +2,23 @@
     "payload": [
         {
             "name":"PETR4",
-            "value": 24.39
+            "share_value": 24.38
         },
         {
             "name":"QUAL3",
-            "value": 13.54
+            "share_value": 13.54
         },
         {
             "name":"RADL3",
-            "value": 62.71
+            "share_value": 62.71
         },
         {
             "name":"RAIL3",
-            "value": 17.30
+            "share_value": 17.30
         },
         {
             "name":"RENT3",
-            "value": 27.90
+            "share_value": 27.90
         }
     ]
 }
