@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -43,9 +44,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		jsonFile, err := os.Open("dataset.json")
 
 		fmt.Println("Successfully Opened dataset.json")
-
 		byteValue, _ := ioutil.ReadAll(jsonFile)
-
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -60,5 +59,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func processData(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	json.NewEncoder(w).Encode("OKOK")
 }
